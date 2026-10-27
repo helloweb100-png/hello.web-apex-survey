@@ -11,7 +11,7 @@
    06 Hero: nube de puntos WebGL + panel de medición
    07 Marquee y cinta métrica · 08 Manifiesto (palabra a palabra)
    09 Servicios (stack + diagnóstico + dial) · 10 Imagen expandible
-   11 Explorador de equipos · 12 Comparador de calibración
+   11 Explorador de equipos · 11b Catálogo · 12 Comparador de calibración
    13 Proceso · 14 Bento · 15 Cifras + red de control
    16 Público (scroll horizontal) · 17 FAQ · 18 Formulario → WhatsApp
    19 Reveals, magnéticos, tilt · 20 Arranque
@@ -205,7 +205,7 @@
     $$('.menu-cta').forEach(a => a.addEventListener('click', closeMenu));
 
     // Secciones activas + puntos laterales + progreso
-    const DOTS = [['hero', 'Inicio'], ['manifiesto', 'Manifiesto'], ['servicios', 'Servicios'], ['taller', 'Del taller al campo'], ['equipos', 'Equipos'], ['calibracion', 'Calibración'], ['proceso', 'Proceso'], ['ventajas', 'La diferencia'], ['cifras', 'Cifras'], ['publico', 'Para quién'], ['faq', 'Preguntas'], ['contacto', 'Contacto']];
+    const DOTS = [['hero', 'Inicio'], ['manifiesto', 'Manifiesto'], ['servicios', 'Servicios'], ['taller', 'Del taller al campo'], ['equipos', 'Equipos'], ['catalogo', 'Catálogo'], ['calibracion', 'Calibración'], ['proceso', 'Proceso'], ['ventajas', 'La diferencia'], ['cifras', 'Cifras'], ['publico', 'Para quién'], ['faq', 'Preguntas'], ['contacto', 'Contacto']];
     const dotsEl = $('#dots');
     if (dotsEl) DOTS.forEach(([id, label]) => {
         const b = document.createElement('button');
@@ -757,6 +757,44 @@
             if (t >= DUR) set((cur + 1) % tabs.length, false);
         });
         if (!auto) prog.parentElement.style.display = 'none';
+    });
+
+    /* ═══ 11b · CATÁLOGO · filtro por tipo + detalle ═══════════ */
+    safe('shop', () => {
+        const grid = $('#shop-grid');
+        if (!grid) return;
+        const cards = $$('.pd', grid), chips = $$('.shop-chip'), count = $('#shop-count');
+
+        chips.forEach(b => b.addEventListener('click', () => {
+            const f = b.dataset.f;
+            chips.forEach(c => { const on = c === b; c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', on); });
+            let n = 0;
+            cards.forEach(c => { const show = f === 'all' || c.dataset.cat === f; c.hidden = !show; if (show) n++; });
+            count.textContent = `Mostrando ${n} ${n === 1 ? 'equipo' : 'equipos'}`;
+        }));
+
+        // Detalle: "Qué incluye" abre un diálogo con la ficha del equipo
+        const dlg = $('#pd-dialog');
+        if (!dlg || typeof dlg.showModal !== 'function') return;
+        const media = $('#pd-d-media'), cat = $('#pd-d-cat'), name = $('#pd-d-name'), price = $('#pd-d-price'), info = $('#pd-d-info'), wa = $('#pd-d-wa');
+        const open = card => {
+            const img = $('.pd-media img', card).cloneNode();
+            img.removeAttribute('loading');
+            media.replaceChildren(img, ...['tl', 'tr', 'bl', 'br'].map(k => Object.assign(document.createElement('span'), { className: 'hud-corner ' + k })));
+            cat.textContent = $('.pd-cat', card).textContent;
+            name.innerHTML = $('.pd-name', card).innerHTML;
+            price.innerHTML = $('.pd-price', card).innerHTML;
+            info.replaceChildren($('.pd-tpl', card).content.cloneNode(true));
+            wa.dataset.wa = $('.pd-buy', card).dataset.wa;
+            applyWA();
+            document.body.classList.add('is-locked'); if (lenis) lenis.stop();
+            dlg.showModal();
+            $('.pd-d-in', dlg).scrollTop = 0; $('.pd-d-body', dlg).scrollTop = 0;
+        };
+        grid.addEventListener('click', e => { const b = e.target.closest('.pd-more'); if (b) open(b.closest('.pd')); });
+        $('#pd-d-close').addEventListener('click', () => dlg.close());
+        dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+        dlg.addEventListener('close', () => { document.body.classList.remove('is-locked'); if (lenis) lenis.start(); });
     });
 
     /* ═══ 12 · COMPARADOR DE CALIBRACIÓN ═══════════════════════ */
