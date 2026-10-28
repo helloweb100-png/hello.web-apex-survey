@@ -22,8 +22,8 @@
     /* ═══ 00 · CONFIGURACIÓN ═══════════════════════════════════
        Cambia SOLO estos valores para personalizar el sitio.     */
     const CONFIG = {
-        phone: '520000000000',          // WhatsApp con código de país, sin "+" ni espacios
-        displayPhone: '+00 000 000 0000', // Cómo se muestra el número en la sección de contacto
+        phone: '5215543288906',         // WhatsApp con código de país, sin "+" ni espacios
+        displayPhone: '+52 1 55 4328 8906', // Cómo se muestra el número en la sección de contacto
         brand: 'Apex Survey'
     };
 
