@@ -55,7 +55,10 @@
         "itemListElement": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Venta de equipo topográfico" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de equipo topográfico" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento y calibración de equipo topográfico" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento y calibración de equipo topográfico" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estudios topográficos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estudios geodésicos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estudios fotogramétricos" } }
         ]
       }
     }
@@ -331,6 +334,8 @@
         <span class="o">Controladoras</span><i></i>
         <span>Calibración</span><i></i>
         <span class="o">Reparación</span><i></i>
+        <span>Estudios topográficos</span><i></i>
+        <span class="o">Geodesia y fotogrametría</span><i></i>
     </div>
 </div>
 
@@ -498,6 +503,38 @@
                         <span class="dial-status mono"><i class="live-dot"></i><span id="dial-msg">Verificando…</span></span>
                         <span class="hud-corner tl"></span><span class="hud-corner tr"></span><span class="hud-corner bl"></span><span class="hud-corner br"></span>
                     </div>
+                </div>
+            </article>
+
+            <!-- 04 ESTUDIOS -->
+            <article class="svc" data-svc style="--i:3">
+                <div class="svc-in">
+                    <div class="svc-copy">
+                        <div class="svc-top">
+                            <span class="svc-num mono">04</span>
+                            <span class="chip chip-sm"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg><span class="mono">Estudios</span></span>
+                        </div>
+                        <h3 class="h3">Cuando prefieras que lo midamos nosotros.</h3>
+                        <p>Además de equiparte, también realizamos estudios para tu proyecto. Cuéntanos qué necesitas medir y te decimos cómo lo resolvemos.</p>
+                        <ul class="ticks">
+                            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Estudios topográficos</li>
+                            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Estudios geodésicos</li>
+                            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Estudios fotogramétricos</li>
+                        </ul>
+                        <a href="https://wa.me/5215543288906" class="btn btn-ink" data-wa="Hola Apex Survey, quiero cotizar un estudio (topográfico, geodésico o fotogramétrico)." data-magnetic>
+                            <span>Quiero cotizar mi estudio</span><svg class="ic btn-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </a>
+                    </div>
+                    <figure class="svc-vis vis-photo">
+                        <img src="img/campo/estudios-dron-gnss.webp"
+                             alt="Dron sobre una plataforma de despegue junto a una base GNSS sobre trípode en un terreno de trabajo"
+                             width="1259" height="948" loading="lazy" decoding="async" data-parallax-img>
+                        <span class="vis-scan" aria-hidden="true"></span>
+                        <span class="hud-corner tl"></span><span class="hud-corner tr"></span><span class="hud-corner bl"></span><span class="hud-corner br"></span>
+                        <figcaption class="vis-tag mono"><i class="live-dot"></i> Dron + GNSS · en campo</figcaption>
+                        <span class="vis-chip c1 mono">Fotogrametría</span>
+                        <span class="vis-chip c2 mono">Geodesia</span>
+                    </figure>
                 </div>
             </article>
 
@@ -1514,7 +1551,7 @@
 
             <ul class="ct-list" data-r="up">
                 <li><span class="cl-ic"><svg class="ic ic-fill" aria-hidden="true"><use href="#i-wa"/></svg></span><div><b>WhatsApp directo</b><a href="https://wa.me/5215543288906" data-wa="Hola Apex Survey, quiero información." id="ct-phone">+52 1 55 4328 8906</a></div></li>
-                <li><span class="cl-ic"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span><div><b>Servicios</b><span>Venta · Reparación · Mantenimiento y calibración</span></div></li>
+                <li><span class="cl-ic"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span><div><b>Servicios</b><span>Venta · Reparación · Mantenimiento y calibración · Estudios</span></div></li>
                 <li><span class="cl-ic"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><div><b>Respuesta rápida</b><span>Te contestamos por WhatsApp en horario de atención.</span></div></li>
             </ul>
         </div>
@@ -1529,6 +1566,7 @@
                     <label class="pill"><input type="radio" name="servicio" value="Venta de equipo" checked><span>Comprar equipo</span></label>
                     <label class="pill"><input type="radio" name="servicio" value="Reparación"><span>Reparación</span></label>
                     <label class="pill"><input type="radio" name="servicio" value="Mantenimiento y calibración"><span>Mantenimiento</span></label>
+                    <label class="pill"><input type="radio" name="servicio" value="Estudios topográficos, geodésicos o fotogramétricos"><span>Estudios</span></label>
                     <label class="pill"><input type="radio" name="servicio" value="Aún no estoy seguro/a"><span>No estoy seguro</span></label>
                 </div>
             </fieldset>
@@ -1583,6 +1621,7 @@
                 <a href="#servicios">Reparación</a>
                 <a href="#servicios">Mantenimiento</a>
                 <a href="#calibracion">Calibración</a>
+                <a href="#servicios">Estudios topográficos</a>
             </nav>
             <nav class="ft-col" aria-label="Equipos">
                 <h4 class="mono">Equipos</h4>
